@@ -1,6 +1,10 @@
+body{
+    background-color: black;
+    color: white;
+} 
 ul {
     list-style-type: none;
    }
 ul > li {
     display: inline-block;
-}   
+}  
