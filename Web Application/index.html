@@ -1,59 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Car Price Adjuster </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Car Price Adjuster</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
   </head>
   <body>
+    <form autocomplete="off" id="form">
+      <div class="form-group">
+        <label>Enter Vehicle Make</label>
+        <input
+          type="text"
+          class="form-control"
+          id="SearchMakeInput"
+          placeholder="Vehicle Make"
+        />
+      </div>
+      <div id="AutoCompletedListMake"></div>
 
-      <form autocomplete="off" id="form">
-        <div class="form-group">
-          <label >Enter Vehicle Make</label>
-          <input type="text" class="form-control" id="SearchMakeInput" placeholder="Vehicle Make" >
-        </div>
-        <div id="AutoCompletedListMake">   
-        </div>
+      <div class="form-group" id="VehicleModelSection" style="display: none">
+        <label>Enter Vehicle Model</label>
+        <input
+          type="text"
+          class="form-control"
+          id="SearchModelInput"
+          placeholder="Vehicle Model"
+        />
+      </div>
+      <div id="AutoCompletedListModel"></div>
 
-        <div class="form-group" id="VehicleModelSection" style="display:none;">
-          <label >Enter Vehicle Model</label>
-          <input type="text" class="form-control" id="SearchModelInput" placeholder="Vehicle Model" >
-        </div>
-        <div id="AutoCompletedListModel">   
-        </div>
+      <div class="form-group" id="VehicleYearSection" style="display: none">
+        <label>Enter Vehicle Year</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Vehicle’s Model Year "
+          id="VehicleYear"
+        />
+      </div>
 
-        <div class="form-group" id="VehicleYearSection" style="display:none;">
-            <label >Enter Vehicle Year</label>
-            <input type="text" class="form-control" placeholder="Vehicle’s Model Year " id="VehicleYear">
-          </div>
+      <div class="form-group" id="VehicleColorSection" style="display: none">
+        <label>Enter Prefered Color</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Vehicle’s Color "
+          id="ChooseColorInput"
+        />
+      </div>
+      <div id="AutoCompletedListColor"></div>
 
-          <div class="form-group" id="VehicleColorSection" style="display:none;">
-            <label >Enter Prefered Color</label>
-            <input type="text" class="form-control" placeholder="Vehicle’s Color " id="ChooseColorInput">
-          </div>  
-          <div id="AutoCompletedListColor">   
-          </div>
+      <div
+        class="btn-group btn-group-toggle"
+        data-toggle="buttons"
+        style="display: none"
+        id="NewUsedOptionButtonSection"
+      >
+        <label class="btn btn-secondary">
+          <input
+            type="radio"
+            name="options"
+            id="OptionNew"
+            autocomplete="off"
+          />
+          New
+        </label>
+        <label class="btn btn-secondary">
+          <input
+            type="radio"
+            name="options"
+            id="OptionUsed"
+            autocomplete="off"
+          />
+          Used
+        </label>
+      </div>
 
-          <div class="btn-group btn-group-toggle" data-toggle="buttons" style="display: none;" id="NewUsedOptionButtonSection">
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" id="OptionNew" autocomplete="off"> New
-            </label>
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" id="OptionUsed" autocomplete="off"> Used
-            </label>
-          </div>
-
-          <button type="button" class="btn btn-primary btn-sm "  id="CalculatePriceButton" style="display:none;" >Calculate Price</button>
-          <div></div>
-          <div class="alert alert-success" role="alert" id="DisplayCalculation" style="display: none;">
-            element.inner text needs to reflect the computed price
-          </div>
-      </form>
+      <button>
+        Calculate Price
+      </button>
+      <div></div>
+      <div
+        class="alert alert-success"
+        role="alert"
+        id="DisplayCalculation"
+        style="display: none"
+      >
+        element.inner text needs to reflect the computed price
+      </div>
+    </form>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
 </html>
