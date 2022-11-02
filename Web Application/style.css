@@ -1,7 +1,10 @@
-body{
+label{
+    color: red;
+}
+html{
     background-color: black;
-    color: white;
-} 
+}
+form{background-color: black;}
 ul {
     list-style-type: none;
    }
