@@ -1,10 +1,10 @@
 label{
-    color: red;
+    color: blue;
 }
 html{
-    background-color: black;
+    background-color: white;
 }
-form{background-color: black;}
+form{background-color: white;}
 ul {
     list-style-type: none;
    }
