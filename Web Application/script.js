@@ -3,13 +3,13 @@ const url ='https://api.npoint.io/02a6606bd83177762972';
 let VehicleMakes = [];
 let VehicleModels = [];
 let VehicleBaseColors = [];
-const SearchMakeInput = document.getElementById('SearchMakeInput');
-const AutoCompleteListMake = document.getElementById('AutoCompletedListMake');
-const SearchModelInput = document.getElementById('SearchModelInput');
-const AutoCompleteListModel = document.getElementById('AutoCompletedListModel');
+const MakeInput = document.getElementById('MakeInput');
+const AutoCompleteMake = document.getElementById('AutoCompletedMake');
+const ModelInput = document.getElementById('ModelInput');
+const AutoCompleteModel = document.getElementById('AutoCompletedModel');
 const VehicleYear = document.getElementById('VehicleYear');
-const AutoCompletedListColor = document.getElementById('AutoCompletedListColor');
-const ChooseColorInput = document.getElementById('ChooseColorInput');
+const AutoCompletedColor = document.getElementById('AutoCompletedColor');
+const ColorInput = document.getElementById('ColorInput');
 const NewUsedOptionButtonSection = document.getElementById('NewUsedOptionButtonSection');
 const CheckNewOption = document.getElementById('OptionNew');
 const CheckUsedOption = document.getElementById('OptionUsed');
@@ -83,12 +83,12 @@ function uniqueVehicleMakeValues(array) {
      }
   }
 
-  SearchMakeInput.addEventListener('input',(event)=>{
-    AutoCompleteSelector(event.target.value,VehicleMakes,AutoCompleteListMake);
-      let temp = document.getElementById(AutoCompleteListMake.id).getElementsByTagName('button');
+  MakeInput.addEventListener('input',(event)=>{
+    AutoCompleteSelector(event.target.value,VehicleMakes,AutoCompleteMake);
+      let temp = document.getElementById(AutoCompleteMake.id).getElementsByTagName('button');
         for (let i = 0; i < temp.length; i++) {
          temp[i].addEventListener('click',(e)=>{
-          DeleteNotSelectedElements(e.target,AutoCompleteListMake);
+          DeleteNotSelectedElements(e.target,AutoCompleteMake);
           UpdateSelectedVehicleMake(e.target);
           removeVehicleModelOptions();
           removeCalculationAlert();
@@ -105,14 +105,14 @@ DisplayVehicleColorOptions();
 }
 
 function DisplayVehicleModelOptions(){
-  document.getElementById("VehicleModelSection").style.display="inline";
+  document.getElementById("VehicleModelSection").style.display="block";
   UpdateVehicleModels();
-  SearchModelInput.addEventListener('input',(event)=>{
-    AutoCompleteSelector(event.target.value,VehicleModels,AutoCompleteListModel);
-      let temp = document.getElementById(AutoCompleteListModel.id).getElementsByTagName('button');
+  ModelInput.addEventListener('input',(event)=>{
+    AutoCompleteSelector(event.target.value,VehicleModels,AutoCompleteModel);
+      let temp = document.getElementById(AutoCompleteModel.id).getElementsByTagName('button');
         for (let i = 0; i < temp.length; i++) {
          temp[i].addEventListener('click',(e)=>{
-          DeleteNotSelectedElements(e.target,AutoCompleteListModel);
+          DeleteNotSelectedElements(e.target,AutoCompleteModel);
           UpdateSelectedVehicleModel(e.target);
         })
       }
@@ -133,7 +133,7 @@ function UpdateVehicleModels(){
   VehicleBaseColors = [...new Set(VehicleBaseColors)];
 }
 function removeVehicleModelOptions(){
-  SearchMakeInput.addEventListener('input',()=>{
+  MakeInput.addEventListener('input',()=>{
     document.getElementById("VehicleModelSection").style.display="none";
     removeVehicleColorOptions();
   });
@@ -169,12 +169,12 @@ function VehicleYearValidation(year){
 
 
 function DisplayVehicleYearInput(){
-  document.getElementById("VehicleYearSection").style.display="inline";
+  document.getElementById("VehicleYearSection").style.display="block";
   displayCheckUsedNewButtons();
 }
 
 function removeVehicleYearInput(){
-  SearchMakeInput.addEventListener('input',(event)=>{
+  MakeInput.addEventListener('input',(event)=>{
     document.getElementById("VehicleYearSection").style.display="none";
     removeCheckUsedNewButtons();
   });
@@ -184,12 +184,12 @@ function UpdateBaseVehicleYear(val){
   ModelYear= val.innerText;
   }
 
-  ChooseColorInput.addEventListener('input',(event)=>{
-    AutoCompleteSelector(event.target.value,VehicleBaseColors,AutoCompletedListColor);
-      let temp = document.getElementById(AutoCompletedListColor.id).getElementsByTagName('button');
+  ColorInput.addEventListener('input',(event)=>{
+    AutoCompleteSelector(event.target.value,VehicleBaseColors,AutoCompletedColor);
+      let temp = document.getElementById(AutoCompletedColor.id).getElementsByTagName('button');
         for (let i = 0; i < temp.length; i++) {
          temp[i].addEventListener('click',(e)=>{
-          DeleteNotSelectedElements(e.target,AutoCompletedListColor);
+          DeleteNotSelectedElements(e.target,AutoCompletedColor);
           UpdateSelectedColor(e.target);
         })
       }
@@ -200,14 +200,14 @@ function UpdateSelectedColor(val){
 }  
 
 function DisplayVehicleColorOptions(){
-  document.getElementById("VehicleColorSection").style.display="inline";
+  document.getElementById("VehicleColorSection").style.display="block";
 }
 function removeVehicleColorOptions(){
   document.getElementById("VehicleColorSection").style.display="none";
 }
 
 function displayNewUsedOptionButtonSection(){
-  NewUsedOptionButtonSection.style.display='inline';
+  NewUsedOptionButtonSection.style.display='block';
 }
 
 function removeNewUsedOptionButtonSection(){
@@ -215,7 +215,7 @@ function removeNewUsedOptionButtonSection(){
 }
 
 function displayCalculatePriceButton(){
-  CalculatePriceButton.style.display = 'inline';
+  CalculatePriceButton.style.display = 'block';
 }
 
 
@@ -224,7 +224,7 @@ function removeCalculatePriceButton(){
 }
 
 function displayCheckUsedNewButtons(){
-  NewUsedOptionButtonSection.style.display='inline';
+  NewUsedOptionButtonSection.style.display='block';
 }
 
 function removeCheckUsedNewButtons(){
@@ -244,7 +244,7 @@ CheckUsedOption.addEventListener('click',(event)=>{
 })
 
 function displayCalculationAlert(){
-  document.getElementById('DisplayCalculation').style.display='inline';
+  document.getElementById('DisplayCalculation').style.display='block';
 }
 
 
