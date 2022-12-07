@@ -7,7 +7,7 @@ const MakeInput = document.getElementById('MakeInput');
 const AutoCompleteMake = document.getElementById('AutoCompletedMake');
 const ModelInput = document.getElementById('ModelInput');
 const AutoCompleteModel = document.getElementById('AutoCompletedModel');
-const VehicleYearInput = document.getElementById('SelectedMileage');
+const VehicleMileageInput = document.getElementById('SelectedMileage');
 const AutoCompletedColor = document.getElementById('AutoCompletedColor');
 const ColorInput = document.getElementById('ColorInput');
 const NewUsedOptionButtonSection = document.getElementById('NewUsedOptionButtonSection');
@@ -15,6 +15,7 @@ const CheckNewOption = document.getElementById('OptionNew');
 const CheckUsedOption = document.getElementById('OptionUsed');
 const CalculatePriceButton = document.getElementById('CalculatePriceButton');
 const displayCalculate = document.getElementById("DisplayCalculation");
+const dateInput = document.getElementById('datepicker')
 let SelectedMake = '';
 let SelectedModel = '';
 let SelectedYear;
@@ -99,6 +100,7 @@ function uniqueVehicleMakeValues(array) {
 function UpdateSelectedVehicleMake(val){
 SelectedMake = val.innerText;
 DisplayVehicleModelOptions();
+updateDisplayCalculation();
 }
 
 function DisplayVehicleModelOptions(){
@@ -128,6 +130,7 @@ function UpdateVehicleModels(){
   }
   VehicleModels = [...new Set(VehicleModels)];
   VehicleBaseColors = ["White", "Black", "Gray", "Silver", "Blue", "Red", "Brown", "Green", "Orange", "Beige", "Purple", "Gold", "Yellow"];
+  updateDisplayCalculation();
 }
 function removeVehicleModelOptions(){
   MakeInput.addEventListener('input',()=>{
@@ -149,6 +152,7 @@ function removeVehicleModelOptions(){
 
 function UpdateSelectedVehicleModel(val){
   SelectedModel = val.innerText;
+  updateDisplayCalculation();
   }
 
 function UpdateBaseVehicleYear(val){
@@ -171,30 +175,76 @@ CheckUsedOption.addEventListener('click',(event)=>{
   }
 })
 
-function displayCalculationAlert(){
-  document.getElementById('DisplayCalculation').style.display='block';
-}
-
-
-function removeCalculationAlert(){
-  document.getElementById('DisplayCalculation').style.display='block';
-}
 
 CalculatePriceButton.addEventListener('click',(event)=>{
   CalculateFinalPrice();
 })
 
-
-function CalculateFinalPrice(){
-  displayCalculate.innerHTML = VehicleYearInput.value;
-  let  CalculatedFinalPrice;
-  if(isSeletectedConditonNew){
-    /* Then we will use the base price */
-    CalculatedFinalPrice = MSRP;
-  }
-  // upon calculation call displayCalcualtionAlert change the inner text to reflect the final price 
-    const percentage = 100 - ((miles/5000)/100);
-    CalculatedFinalPrice = MSRP*percentage;
+function updateDisplayCalculation(){
+  displayCalculate.innerHTML = '';
 }
 
-const MSRP = Car_Price_New;
+function CalculateFinalPrice(){
+  let a = AutoCompleteMake.childNodes[0].innerText;
+  let b = AutoCompleteModel.childNodes[0].innerText;
+  let c = AutoCompletedColor.childNodes[0].innerText;
+  let d = dateInput.innerHTML;
+  console.log(d)
+  let colorsHashtable = new Map();
+  colorsHashtable.set("White", 0);
+  colorsHashtable.set("Black", 0);
+  colorsHashtable.set("Gray", 300);
+  colorsHashtable.set("Silver", 1000);
+  colorsHashtable.set("Blue", 1000);
+  colorsHashtable.set("Red", 300);
+  colorsHashtable.set("Brown", 600);
+  colorsHashtable.set("Green", 600);
+  colorsHashtable.set("Orange", 500);
+  colorsHashtable.set("Beige", 1000);
+  colorsHashtable.set("Purple", 100);
+  colorsHashtable.set("Gold", 2000);
+  colorsHashtable.set("Yellow", 200);
+
+  let makeHashtable = new Map();
+
+  let VehicleMakesArray = ["Ford","Plymouth","Lincoln","Jeep","Mercury","Cadillac","Honda","Infiniti","Lotus","Lexus","Hyundai","Bentley","BMW","GMC","Mitsubishi",
+  "Daewoo","Audi","Pontiac","Porsche","Dodge","Nissan","Acura","Volkswagen","Alfa,Romeo","Kia","Toyota","Chevrolet","Subaru","Merkur","Land Rover","Maserati","Eagle",
+  "Volvo","Mercedes-Benz","Chrysler","Suzuki","Buick","Mazda","Saturn","Oldsmobile","Morgan","Hummer","Geo","Lamborghini","Aptera","Scion","Isuzu","Fiat","Saab","Smart","Panoz",
+  "MINI","Jaguar","Rolls-Royce","Aston Martin","Ram",
+  "Austin","Studebaker","Ferrari","Peugeot","Maybach","Daihatsu","Spyker","Tesla","Fairthorpe"]
+
+  let VehicleMakePercentage = [5, 10, 3, 1, 3, 11, 9, 2, 8, 4, 10, 4, 10, 4, 8, 10, 4, 4, 8, 6, 9, 3, 4, 12, 11, 9, 4, 8, 5, 10, 7, 4, 6, 6, 6, 9, 10, 10, 4, 3, 4, 4, 8, 9, 12, 3, 8, 11, 12, 11, 8, 9, 9, 12, 10, 6, 7, 4, 11, 3, 6, 10, 4, 4, 8]
+
+  for (let i = 0; i < VehicleMakesArray.length; i++) {
+    makeHashtable.set(VehicleMakesArray[i],VehicleMakePercentage[i])    
+  }
+
+  let temp = [];
+  for (let i = 0; i < jsonFetchedData.length; i++) {
+      let j =  jsonFetchedData[i];
+      if(j.Car_Make==a && j.Car_Model==b){
+        temp.push(j)
+      }
+  }
+
+  let summation = 0;
+  for(let i = 0; i < temp.length; i++) {
+      summation += temp[i].Car_Price_New;
+  }
+  let avg = summation / temp.length;
+
+  let MSRP = avg;// base price 
+
+  displayCalculate.innerHTML = VehicleMileageInput.value;
+  let  CalculatedFinalPrice;
+  if(isSeletectedConditonNew){
+    
+    CalculatedFinalPrice = 0;
+  }
+  else{
+
+  }
+
+}
+
+
