@@ -262,6 +262,11 @@ CalculatePriceButton.addEventListener('click',(event)=>{
 function CalculateFinalPrice(){
   if(isSeletectedConditonNew){
     /* Then we will use the base price */
+    CalculatedFinalPrice = MSRP;
   }
   // upon calculation call displayCalcualtionAlert change the inner text to reflect the final price 
+    const percentage = 100 - ((miles/5000)/100);
+    CalculatedFinalPrice = MSRP*percentage;
 }
+
+const MSRP = Car_Price_New;
