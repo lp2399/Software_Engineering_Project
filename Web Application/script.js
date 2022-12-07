@@ -252,6 +252,13 @@ function removeCalculationAlert(){
   document.getElementById('DisplayCalculation').style.display='none';
 }
 
+const displayCalculate = document.getElementById("DisplayCalculation");
+
+CalculatePriceButton.addEventListener('click',(event)=>{
+  displayCalculate.innerText = "test";
+})
+
+
 function CalculateFinalPrice(){
   if(isSeletectedConditonNew){
     /* Then we will use the base price */
