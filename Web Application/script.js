@@ -185,6 +185,7 @@ function updateDisplayCalculation(){
 }
 
 function CalculateFinalPrice(){
+  displayCalculate.innerHTML = "";
   let a = AutoCompleteMake.childNodes[0].innerText;
   let b = AutoCompleteModel.childNodes[0].innerText;
   let c = AutoCompletedColor.childNodes[0].innerText;
@@ -235,7 +236,7 @@ function CalculateFinalPrice(){
 
   let MSRP = avg;// base price 
 
-  displayCalculate.innerHTML = MSRP - VehicleMileageInput.value;
+  displayCalculate.innerHTML = (MSRP * (1-((VehicleMileageInput.value/2500)/100)))- year;
   let  CalculatedFinalPrice;
   if(isSeletectedConditonNew){
     
@@ -246,5 +247,3 @@ function CalculateFinalPrice(){
   }
 
 }
-
-
