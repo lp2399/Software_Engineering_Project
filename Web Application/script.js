@@ -249,13 +249,13 @@ function displayCalculationAlert(){
 
 
 function removeCalculationAlert(){
-  document.getElementById('DisplayCalculation').style.display='none';
+  document.getElementById('DisplayCalculation').style.display='block';
 }
 
 const displayCalculate = document.getElementById("DisplayCalculation");
 
 CalculatePriceButton.addEventListener('click',(event)=>{
-  displayCalculate.innerText = "test";
+  displayCalculate.innerHTML = "Test";
 })
 
 
