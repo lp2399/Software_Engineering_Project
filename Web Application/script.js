@@ -7,14 +7,14 @@ const MakeInput = document.getElementById('MakeInput');
 const AutoCompleteMake = document.getElementById('AutoCompletedMake');
 const ModelInput = document.getElementById('ModelInput');
 const AutoCompleteModel = document.getElementById('AutoCompletedModel');
-const VehicleYear = document.getElementById('VehicleYear');
+const VehicleYearInput = document.getElementById('SelectedMileage');
 const AutoCompletedColor = document.getElementById('AutoCompletedColor');
 const ColorInput = document.getElementById('ColorInput');
 const NewUsedOptionButtonSection = document.getElementById('NewUsedOptionButtonSection');
 const CheckNewOption = document.getElementById('OptionNew');
 const CheckUsedOption = document.getElementById('OptionUsed');
 const CalculatePriceButton = document.getElementById('CalculatePriceButton');
-
+const displayCalculate = document.getElementById("DisplayCalculation");
 let SelectedMake = '';
 let SelectedModel = '';
 let SelectedYear;
@@ -91,7 +91,6 @@ function uniqueVehicleMakeValues(array) {
           DeleteNotSelectedElements(e.target,AutoCompleteMake);
           UpdateSelectedVehicleMake(e.target);
           removeVehicleModelOptions();
-          removeCalculationAlert();
         })
        
       }
@@ -100,8 +99,6 @@ function uniqueVehicleMakeValues(array) {
 function UpdateSelectedVehicleMake(val){
 SelectedMake = val.innerText;
 DisplayVehicleModelOptions();
-DisplayVehicleYearInput();
-DisplayVehicleColorOptions();
 }
 
 function DisplayVehicleModelOptions(){
@@ -130,59 +127,14 @@ function UpdateVehicleModels(){
     }; 
   }
   VehicleModels = [...new Set(VehicleModels)];
-  VehicleBaseColors = [...new Set(VehicleBaseColors)];
+  VehicleBaseColors = ["White", "Black", "Gray", "Silver", "Blue", "Red", "Brown", "Green", "Orange", "Beige", "Purple", "Gold", "Yellow"];
 }
 function removeVehicleModelOptions(){
   MakeInput.addEventListener('input',()=>{
-    document.getElementById("VehicleModelSection").style.display="none";
-    removeVehicleColorOptions();
+    document.getElementById("VehicleModelSection").style.display="none";;
   });
   UpdateVehicleModels();
-  removeVehicleYearInput();
 }
-
-function UpdateSelectedVehicleModel(val){
-  SelectedModel = val.innerText;
-  }
-
-VehicleYear.addEventListener('keypress',(event)=>{
-  if (event.key === 'Enter') {
-    if(VehicleYearValidation(event.target)){
-      SelectedYear = ModelYear;
-    }
-    console.log(event.target.value)
-  }
-  else{return;}
-})  
-
-function VehicleYearValidation(year){
-  for (let i = 0; i < jsonFetchedData.length; i++) {
-    if(jsonFetchedData[i].Car_Make==SelectedMake && jsonFetchedData.Car_Model==SelectedMake){
-      UpdateBaseVehicleYear(jsonFetchedData[i].Car_Model_Year);
-    }
-    if(year.value<ModelYear ||year.value > (new Date().getFullYear())+2){
-      return false;
-    }
-
-  }return true;
-}  
-
-
-function DisplayVehicleYearInput(){
-  document.getElementById("VehicleYearSection").style.display="block";
-  displayCheckUsedNewButtons();
-}
-
-function removeVehicleYearInput(){
-  MakeInput.addEventListener('input',(event)=>{
-    document.getElementById("VehicleYearSection").style.display="none";
-    removeCheckUsedNewButtons();
-  });
-}
-
-function UpdateBaseVehicleYear(val){
-  ModelYear= val.innerText;
-  }
 
   ColorInput.addEventListener('input',(event)=>{
     AutoCompleteSelector(event.target.value,VehicleBaseColors,AutoCompletedColor);
@@ -195,41 +147,17 @@ function UpdateBaseVehicleYear(val){
       }
   });
 
+function UpdateSelectedVehicleModel(val){
+  SelectedModel = val.innerText;
+  }
+
+function UpdateBaseVehicleYear(val){
+  ModelYear= val.innerText;
+  }
 function UpdateSelectedColor(val){
   SelectedColor = val.innerText;
 }  
 
-function DisplayVehicleColorOptions(){
-  document.getElementById("VehicleColorSection").style.display="block";
-}
-function removeVehicleColorOptions(){
-  document.getElementById("VehicleColorSection").style.display="none";
-}
-
-function displayNewUsedOptionButtonSection(){
-  NewUsedOptionButtonSection.style.display='block';
-}
-
-function removeNewUsedOptionButtonSection(){
-  NewUsedOptionButtonSection.style.display='none';
-}
-
-function displayCalculatePriceButton(){
-  CalculatePriceButton.style.display = 'block';
-}
-
-
-function removeCalculatePriceButton(){
-  CalculatePriceButton.style.display = 'none';
-}
-
-function displayCheckUsedNewButtons(){
-  NewUsedOptionButtonSection.style.display='block';
-}
-
-function removeCheckUsedNewButtons(){
-  NewUsedOptionButtonSection.style.display='none';
-}
 
 CheckNewOption.addEventListener('click',(event)=>{
   if(event.target.value =='ON'){
@@ -252,14 +180,14 @@ function removeCalculationAlert(){
   document.getElementById('DisplayCalculation').style.display='block';
 }
 
-const displayCalculate = document.getElementById("DisplayCalculation");
-
 CalculatePriceButton.addEventListener('click',(event)=>{
-  displayCalculate.innerHTML = "Test";
+  CalculateFinalPrice();
 })
 
 
 function CalculateFinalPrice(){
+  displayCalculate.innerHTML = VehicleYearInput.value;
+  let  CalculatedFinalPrice;
   if(isSeletectedConditonNew){
     /* Then we will use the base price */
     CalculatedFinalPrice = MSRP;
