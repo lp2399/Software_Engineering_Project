@@ -189,8 +189,6 @@ function CalculateFinalPrice(){
   let a = AutoCompleteMake.childNodes[0].innerText;
   let b = AutoCompleteModel.childNodes[0].innerText;
   let c = AutoCompletedColor.childNodes[0].innerText;
-  let d = dateInput.innerHTML;
-  console.log(d)
   let colorsHashtable = new Map();
   colorsHashtable.set("White", 0);
   colorsHashtable.set("Black", 0);
@@ -206,20 +204,6 @@ function CalculateFinalPrice(){
   colorsHashtable.set("Gold", 2000);
   colorsHashtable.set("Yellow", 200);
 
-  let makeHashtable = new Map();
-
-  let VehicleMakesArray = ["Ford","Plymouth","Lincoln","Jeep","Mercury","Cadillac","Honda","Infiniti","Lotus","Lexus","Hyundai","Bentley","BMW","GMC","Mitsubishi",
-  "Daewoo","Audi","Pontiac","Porsche","Dodge","Nissan","Acura","Volkswagen","Alfa,Romeo","Kia","Toyota","Chevrolet","Subaru","Merkur","Land Rover","Maserati","Eagle",
-  "Volvo","Mercedes-Benz","Chrysler","Suzuki","Buick","Mazda","Saturn","Oldsmobile","Morgan","Hummer","Geo","Lamborghini","Aptera","Scion","Isuzu","Fiat","Saab","Smart","Panoz",
-  "MINI","Jaguar","Rolls-Royce","Aston Martin","Ram",
-  "Austin","Studebaker","Ferrari","Peugeot","Maybach","Daihatsu","Spyker","Tesla","Fairthorpe"]
-
-  let VehicleMakePercentage = [5, 10, 3, 1, 3, 11, 9, 2, 8, 4, 10, 4, 10, 4, 8, 10, 4, 4, 8, 6, 9, 3, 4, 12, 11, 9, 4, 8, 5, 10, 7, 4, 6, 6, 6, 9, 10, 10, 4, 3, 4, 4, 8, 9, 12, 3, 8, 11, 12, 11, 8, 9, 9, 12, 10, 6, 7, 4, 11, 3, 6, 10, 4, 4, 8]
-
-  for (let i = 0; i < VehicleMakesArray.length; i++) {
-    makeHashtable.set(VehicleMakesArray[i],VehicleMakePercentage[i])    
-  }
-
   let temp = [];
   for (let i = 0; i < jsonFetchedData.length; i++) {
       let j =  jsonFetchedData[i];
@@ -233,7 +217,7 @@ function CalculateFinalPrice(){
       summation += temp[i].Car_Price_New;
   }
 
-  let MSRP =  summation / temp.length;// base price 
+  let MSRP =  (summation / temp.length)+colorsHashtable.get(String(c));// base price 
 
 
 
