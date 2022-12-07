@@ -232,18 +232,14 @@ function CalculateFinalPrice(){
   for(let i = 0; i < temp.length; i++) {
       summation += temp[i].Car_Price_New;
   }
-  let avg = summation / temp.length;
 
-  let MSRP = avg;// base price 
+  let MSRP =  summation / temp.length;// base price 
 
-  displayCalculate.innerHTML = (MSRP * (1-((VehicleMileageInput.value/2500)/100)));
-  let  CalculatedFinalPrice;
+
+
   if(isSeletectedConditonNew){
-    
-    CalculatedFinalPrice = 0;
+    VehicleMileageInput.value= 0;
   }
-  else{
-
-  }
-
+  
+  displayCalculate.innerHTML = Math.round(MSRP * (1-((VehicleMileageInput.value/2500)/100)));
 }
