@@ -235,7 +235,7 @@ function CalculateFinalPrice(){
 
   let MSRP = avg;// base price 
 
-  displayCalculate.innerHTML = VehicleMileageInput.value;
+  displayCalculate.innerHTML = MSRP - VehicleMileageInput.value;
   let  CalculatedFinalPrice;
   if(isSeletectedConditonNew){
     
