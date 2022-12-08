@@ -1,0 +1,222 @@
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Template for a conference paper, prepared for the
+%% Food and Resource Economics Department - IFAS
+%% UNIVERSITY OF FLORIDA
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Version 1.0 // November 2019
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ariel Soto-Caro
+%%  - asotocaro@ufl.edu
+%%  - arielsotocaro@gmail.com
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage{UF_FRED_paper_style}
+\input{commands.tex}
+\doublespacing
+
+\setlength{\droptitle}{-5em} %% Don't touch
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SET THE TITLE
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% TITLE:
+\title{Software Engineering Final Project Report: Car Price Estimator Web Application
+}
+
+% AUTHORS:
+\author{Juan Cisneros\\% Name author
+    \href{mailto:firstauthor@ufl.edu}{} %% Email author 1 
+\and Angel Meraz Payan\\% Name author
+    \href{mailto:secondauthor@ufl.edu}{} %% Email author 2
+\and Luis Perez\\% Name author
+    \href{mailto:thirdauthor@ufl.edu}{}%% Email author 3
+%\and Forth Author\\% Name author
+%    \href{mailto:forthuthor@ufl.edu}{\texttt{forthuthor@ufl.edu}}%% Email author 4
+    }
+    
+% DATE:
+\date{\today}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\doublespacing
+\begin{document}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\setstretch{.8}
+\maketitle
+% %%%%%%%%%%%%%%%%%%
+\begin{abstract}
+% CONTENT OF ABS HERE--------------------------------------
+In this final project for software engineering, we utilize various technologies and use our acquired knowledge to design, implement and deploy a web application. The application is created using JavaScript, HTML, and CSS, with a JSON storage bin acting as our database. In this paper, we describe the process and work put in by the team to complete the project from the design phase to deployment. 
+
+% END CONTENT ABS------------------------------------------
+\noindent
+\textit{\textbf{Keywords: }%
+Software Engineering; Web Application;.} \\ %% <-- Keywords HERE!
+\noindent
+\end{abstract}
+}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BODY OF THE DOCUMENT
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --------------------
+\section{Introduction}
+% --------------------
+
+Software engineering is the process of creating software systems, software engineering has a set of processes on how to develop software. We begin with an idea for a product that will serve a customer or provide certain functionality to benefit or improve a process in a company or organization. Our idea was to create an application of some sort that would estimate the prices of a vehicle based on certain criteria which we would obtain as input from a user. We also discussed making our project open-source since some of the tools and technologies we would be using are also open-source, we decided to use the MIT License for our project \cite{MIT}. This application should follow a logical and smooth flow because it will work depending on provided options that we obtain from the user. In order for this website to be fully functional we must implement a user interface that is uniform and will assist the user in choosing the options or suggestions that they desire. The results shall be displayed on the web page and it will have condensed information and the different attributes that made the price of the vehicle result in whatever the outcome was. 
+
+
+
+
+\begin{figure}[H]
+\caption{Technologies, and Languages}
+\centering
+\includegraphics[scale=.25]{figures/Technologies Used.png}\\
+\end{figure}
+\noindent We now discuss the technologies we used for our development process. Figure 1 showcases the technologies and tools we utilized for this project. We decided to use GitHub for development and source control, this tool was an essential piece in keeping our program well-documented and made it easier for us to make contributions to the project. GitHub also has a feature called GitHub pages that allows us to host static websites, our application could be constructed as a static website that runs on the client side. Another crucial tool is Lucidchart which is an online collaborative web application that allowed us to create diagrams and other visualizations. This tool allowed us to create many of the diagrams used for designing our application and also accompanying the visual aids for our report and presentation. The final but also highly important technology we used was the free and open-source JSON storage bin API n:point\cite{npoint.io}. This tool essentially acted as our data storage, this storage stores a JSON array that contains the data set that will be used for calculating prices in our application. The n:point API works in conjunction with JavaScript FETCH API \cite{APIs} to retrieve the JSON array from the online hosted storage bin that contains our data. Again since our application is meant to run on the web browser the languages and markup we would be using to construct our website are the commonly used technologies of JavaScript, HTML, and CSS. For JavaScript, we would be using the core "Vanilla" JavaScript \cite{JS} version meaning without any external libraries such as JQuery or JavaScript frameworks such as React Native, instead, we used built-in tools and libraries such as the FETCH API\cite{web}. In terms of HTML \cite{HTML} and CSS \cite{CSS}, we decided to use Bootstrap 5 which is a free and open-source HTML and CSS framework that consists of reusable components\cite{thornton_otto}. This framework provides pre-built reusable components which makes developing the UI (user interface) much faster with properly documented code. Bootstrap 5 is also used for building responsive web pages that automatically conform all content of a web page to the size of the device accessing the web page. This is an important feature of this framework since it means we do not have to create a separate website specifically for mobile devices, allowing us to same development time. 
+
+% --------------------
+\section{Methodology}
+% --------------------
+
+\subsection{Requirements and definitions and System and Software design}                   
+ The first key step in the development process is deciding the development methodology to use for developing our web application. As a group, we discussed the various approaches to the development process of our application, and what stood out most was the waterfall methodology \cite{waseem_2022}. The waterfall method is comprised of the flowing steps: first, we create system requirements and documentation, then we design the system (this includes creating flowcharts and diagrams, and brainstorming technologies to use), next we implement the system based on the requirements and design patterns, finally we test the application and perform reevaluations to ensure the product is ready to be released, finally we deliver the finished application (this step means we deploy the application so that it is accessible by the user), and finally we maintain the project after delivery to fix errors or to add extra functionally. As we can see in Figure 2 we start with system requirements and definitions. We note that our system requirements were updated twice so we will only discuss our most recent updated requirements. 
+
+\begin{figure}[H]
+\caption{Waterfall methodology for software development}
+\centering
+\includegraphics[scale=.45]{figures/Waterfall Methodology.png}\\
+\end{figure}
+\noindent Our system requirements were created by us but will simulate a client doing business with our team, in essence, the client wants us to develop a web application based on these requirements (Reference Appendix \ref{subsec:A} for these requirements). The first section of requirements basically states what we are building, first, it must be a website, this requires the use of a web browser, and as previously stated this will work on any desktop and mobile device of any operating system that supports the internet connection and web browsing. This section also states some behavior that the application should have such as providing navigation and how the user experience should act. The next section describes how the home page should function the main purpose of this web page is to inform the user about the application. The next section goes more into detail on how the application that estimates the price of a vehicle should function. After we discussed these requirements we were ready to begin system and software design, in this stage we created flow charts and diagrams of how the web application would be implemented. Figure 3 visualizes the description of the first set of requirements for how the application will be accessed by a user. 
+
+\begin{figure}[H]
+\caption{Accessing Application Diagram}
+\centering
+\includegraphics[scale=.3]{figures/Accessing Application Flowchart.png}\\
+\end{figure}
+\noindent As described by Figure 3 the user will access a web browser using either a mobile device or a Laptop or a Desktop PC, the user will then directly access the website using the URL shown or via a search engine query. Accessing the website will start out with the user seeing the home page and at any point, the user can access the price estimating application via the navigation bar. The next figure describes the structure of what the home web page or the landing page will look like.
+
+\begin{figure}[H]
+\caption{Homepage or Landing Page Structure}
+\centering
+\includegraphics[scale=.26]{figures/Homepage Mockup.png}\\
+\end{figure}
+\noindent As we can see from Figure 4 the structure of the homepage follows the provided requirements that it must contain a navigation bar, followed by an image carousel then a large section containing information about was is supported by the application. It must also end with a section that contains a button that directs to the estimation web page. It is a convention for the navigation bar to be at the top of a web page since the browser upon loading a web page starts from the very top, so this will allow fast navigation through the website. Again following the principle that the contents of a web page are loaded from the top to bottom we want to catch the user's eye by providing visuals, in this case, we added stock images in a carousel that briefly introduces the user to the application. The jumbotron section provides an actual welcome message to the user, while the card section provides visual imagery of the support provided by the application and the list section reinforces other support provided. The button in the featured section is placed at the bottom of the page to draw in the user to click on the link with leads to the estimation web page. Each section is placed in that specific order to make the web page easy to follow and continuous. A note on the web page structure, for each section such as navigation, image carousel, jumbotron, and so on, we utilized Bootstrap 5 components to build the web page. 
+
+\begin{figure}[H]
+\caption{Estimation Web-page Architecture Flow Chart}
+\centering
+\includegraphics[scale=.22]{figures/Application Architecture.png}\\
+\end{figure}
+
+\noindent Figure 5 describes the process flow of the architecture for the estimation web page, while Figure 6 is the flow sequence of what the actual web page will look like and how it will function. The application begins by prompting the user with a form that receives input. This form takes in a string input and makes a GET request using FETCH API to the JSON storage bin to retrieve the data. Then using JavaScript built-in libraries we will match the user input with what is stored in the JSON array data that was fetched to display options, these options are the make of a vehicle more specifically the car make the user is searching for. In essence, this feature is similar to a search menu that provides a user with auto-completed suggestions, so that way there is no need to handle incorrect or irrelevant input by the user in common string input forms. Each option or suggestion based on the input is a clickable button that will store the value of the selected option or suggestion, after a user clicks a certain button all other options or suggestions will be erased until the user decides to change the input on the form. This basic principle is applied to the rest of the forms that take in the input of the vehicle model, and color. For reference on how the process works see Figure 6. 
+The section that takes in the year of a vehicle is also a form much like the first, in this case, this form accepts an integer, and we must handle incorrect or irreverent input. The radio button seen in Figure 6 is a type of button that has only one of two states, new or used, this button gets toggled by the user and is used for calculating the estimated price of a vehicle. We note that our design was made to follow procedural programming paradigm along with JavaScript's event-driven programming. This is because after the user triggers one event another event will be set in motion, and there is a logical sequence or procedure for displaying the application to the user. So overall our architecture design was made to have this logical sequence so that a user finds the application intuitive and easy to use.
+\begin{figure}[H]
+\caption{Estimation Web-page Mock-up Flow Chart}
+\centering
+\includegraphics[scale=.078]{figures/Second Mockup.png}\\
+\end{figure}
+\noindent Below, Figure 7 gives an overview of how the n:point API works in conjunction with JavaScript's FETCH API.   
+
+\begin{figure}[H]
+\caption{n:point API diagram}
+\centering
+\includegraphics[scale=.25]{figures/API.png}\\
+\end{figure}
+\noindent To retrieve the data we first use JavaScript FETCH API to perform a GET request to n:point API where our JSON storage bin is located, since this is a storage bin we do not require an API token. API tokens are commonly used to authenticate users, to ensure that a user making a request actually has access to the requested data which is only offered to paying users \cite{dataverse.org}, in this instance, our data is publicly available. However, there are some restrictions given by n:point there can be no more than 100 requests/min per IP address or 600 requests/min per JSON bin \cite{npoint.io}. Because of this case, we must ensure that if we have reached these limitations we must handle any issues or errors derived from these limitations by notifying users that our service is down, it is highly improbable that these limits will ever be surpassed. In the case that we successfully retrieve the JSON array of objects then our application can proceed. As we can see from Figure 7 an example of one of the JSON objects that is retrieved contains the make, color, model, base price, and model year. This is an essential process that allows us to calculate a vehicle's estimated price based on user input.
+
+\subsection{Implementation and unit testing}
+As we previously mentioned in our introduction we would be using JavaScript, CSS, and HTML to build our application, we discuss our implementation and testing process. We start off with creating the first web page which is the home page, for reference on the HTML code written for this web page see Appendix \ref{subsec:B}. The home page HTML follows the basic HTML structure that every web page must have, it starts with the type of document in this case html, this is followed by a head tag that contains various metadata including the title of the web page, the favicon which is the website icon displayed by the browser, the file link to the style sheets and the meta tag that allows the web page to be responsive (mobile, desktop ready). In the body tag, we follow the structure proposed in figure 4 using Bootstrap 5 components. At the very bottom is where we provide the source of the JavaScript files we will be using, these files are delivered by a CDN and are necessary since they are a part of the Bootstrap framework. Appendix \ref{subsec:C} contains the HTML for the estimation page. Again it follows the same structure as the home page until we reach the body tag. In the body tag, there is a form tag that is the main container where the user will input their choices. Below each auto-complete supported input tag there is a div tag that is used to display the auto-completed suggestions. Appendix \ref{subsec:D} consists of the style that we added to both web pages, these styles are plainly for visuals used in the UI and are not necessarily important to discuss since they do not contribute to the overall functionality of the web page. Appendix \ref{subsec:E} is comprised of all our client-side logic that will be executed within the user's web browser. This JavaScript program consists of adding the auto-complete functionality, selecting elements from the HTML file for DOM manipulation, taking in user input for manipulation, retrieving the JSON array using FETCH API, and using all the input fields to calculate the estimated price of a vehicle. 
+\begin{figure}[H]
+\caption{Algorithm diagram}
+\centering
+\includegraphics[scale=.25]{figures/canvas.png}\\
+\end{figure}
+Figure 8 describes the algorithm for computing the final price based on all input from the user. 
+% --------------------
+\section{Discussions and Conclusions}
+\subsection{Integration and System testing}
+As we have previously mentioned we decided to host our website using GitHub web pages\cite{pages.github}, this was our integration and deployment. GitHub pages are used for hosting a static website, since our website does not require a server we can use this tool for deployment, we can view our website using the following URL \url{https://lp2399.github.io/estimatecarprices.github.io/}. We now discuss our testing methods to ensure the application behaved properly. We used two cars to test out the vehicle price estimation. The first vehicle we estimated was a Red Ford Mustang from 2020, one was a new vehicle with 0 miles on the dash and the other was also a Red Ford Mustang from 2020 but this vehicle had 99,000 miles on the dash. Without calculations working we had the used car at an estimated price of \$18,119 whereas the new one would be \$29,998. The second vehicle we tested was a 2015 Green Dodge Challenger the new one with 0 miles was at an estimated price of \$22,839 whereas the used one with 69,000 miles on the dash was estimated to be worth \$16,535. Below is a set of figures from 9-12 from our unit testing the application behaved as expected.  
+\begin{figure}[H]
+\caption{New Mustang}
+\centering
+\includegraphics[scale=.6]{figures/New mustang.png}\\
+\end{figure}
+
+\begin{figure}[H]
+\caption{New Challenger}
+\centering
+\includegraphics[scale=.6]{figures/NewChallenger.png}\\
+\end{figure}
+
+\begin{figure}[H]
+\caption{Used Mustang}
+\centering
+\includegraphics[scale=.6]{figures/UsedMustang.png}\\
+\end{figure}
+
+\begin{figure}[H]
+\caption{Used Challenger}
+\centering
+\includegraphics[scale=.6]{figures/UsedChallenger.png}\\
+\end{figure}
+
+
+\subsection{Operation and Maintance}
+\begin{figure}[H]
+\caption{Gantt Chart}
+\centering
+\includegraphics[scale=.199]{figures/Gantt Chart.png}\\
+\end{figure}
+We now discuss our work and contributions, Figure 13  demonstrates a Gantt chart, which shows the contributions each team member made. As we can see from this chart most of our work was put toward the design and implementation phases. Week 1 is where we first began the project designs and requirements, week 14 is the final week where everything was tested and completed. Each team member contributed our meeting days were Monday, and Wednesday from 12:15 PM to 1:00 PM, including the time provided during class, and Saturday from 12:00 PM to 1:00 PM. Most of our work was again done using GitHub version control, we also used messaging apps to keep ourselves on track. In the operation and maintenance section, we updated various functionality such as adding a hash table containing color keys, and prices as values. As far as maintenance goes we plan on making some additions that would have more support such as displaying images of the vehicles based on the make and model with different colors. Overall this final project allowed us to utilize various technologies and our acquired knowledge to design, implement and deploy a web application. The technologies we used of JavaScript, HTML, and CSS, with a JSON storage bin acting as our database, allowed us to have a responsive website that conformed with the requirements and is accessible from mobile and desktop devices. 
+% --------------------
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFERENCES SECTION
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliography{references}
+
+
+\section{Appendices}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\subsection{System Requirements}
+\label{subsec:A}
+\input{System-Requirements.tex}
+\subsection{Home page HTML code}
+\label{subsec:B}
+\let\clearpage\relax
+\input{index-html.tex}
+\subsection{Estimation page HTML code}
+\label{subsec:C}
+\let\clearpage\relax
+\input{Estimation-html.tex}
+\subsection{Styles added to both web pages code}
+\label{subsec:D}
+\let\clearpage\relax
+\input{Style-css.tex}
+\subsection{JavaScript client-side logic code}
+\label{subsec:E}
+\let\clearpage\relax
+\input{script-javascript.tex}
+\subsection{Additional Icons, and Images Used for Visuals Throughout the Entire Project and GitHub repository}
+\label{subsec:F}
+\begin{lstlisting}[breaklines]
+https://github.com/lp2399/Software_Engineering_Project/blob/main/images_sources.txt
+https://github.com/lp2399/Software_Engineering_Project
+\end{lstlisting}
+
+\newpage
+\end{document}
